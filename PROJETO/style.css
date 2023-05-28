@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*para manter o 360px do container
+    pois se eu tentar usar padding no container eu perco o px de 360
+    entao com boxsizing uso o padding garantindo os 360 do container*/
+    
+}
+
+:root {
+    --text-color: white;
+    --bg-url: url(./Assets/bg-mobile.jpg);
+    --storke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.05);
+    --surface-colo-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+    --switch-bg-url: url(./Assets/Monn-stars.svg);
+}
+
+
+.light {
+    --text-color: black;
+    --bg-url: url(./Assets/bg-mobile-light.jpg);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-colo-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(0, 0, 0, 0.1);
+    --switch-bg-url: url(./Assets/sun.svg);
+}
+
+body {
+    /* background-image: url(./Assets/bg-mobile.jpg);
+    por padrao as imagens repete no css
+    background-repeat: no-repeat; nao repete a imagem
+    background-position: top center;
+    background-size: cover; Faz a imagem preencher todo o espaço visivel */
+
+    background:var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+    /*este asteristico indica seletor universal, ira aplicar a fonte em todo meu body*/
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+#Container {
+    width: 360px;
+    height: 712px;
+    /* border: 1px solid red; */
+    margin: 56px auto 0px;
+    /*56 top e bottom, auto nas laterais e 0 em baixo*/
+
+    /* padding 0 24px, valor zero pra top e bottom e 24 para as laterais ,poderia usar essa propriedade para nao precisar usar no elemento  = UL = ja que meu container inteiro tem 24px de padding, mais nao é sempre que isso acontece. */
+}
+#profile {
+    text-align: center;
+    padding: 24px;
+}
+
+#profile img {
+    width: 112px;
+    /* height: 112px; nao é necessáro altura pois a box se forma de cima para baixo
+     display: block;
+     margin: auto;
+    img é 'inline' margin auto nao funciona por isso é preciso usar displayblock, porem o pai do elemento aceita  text-align center. */
+}
+#profile p { 
+    font-weight: 500;
+    /*font-size: 16px;  os navegadores ja tem por padrao a fonte de 16px*/
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+#switch {
+    position: relative;
+    width: 64px;
+    margin: 4px auto;
+}
+
+#switch button {
+    width: 32px;
+    height: 32px;
+    background: #ffffff var(--switch-bg-url) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+    position: absolute;  /* top e tranform é uma forma de alinha elementos absolutos */
+    top: 50%;
+    left: 0;
+    z-index: 1;  /* define se a imagem do switch span vai fica por cima ou por baixo */
+    transform: translateY(-50%);
+  
+}
+.light #switch button {
+    right: 0;
+    left: initial;
+}
+#switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--storke-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 9999px;
+}
+
+
+ul {
+     list-style: none; /*remove os pontonhos da lista nao ordenada */
+    display: flex;
+    flex-direction: column;
+    /*display flex e flex diretion usados para poder fazer o uso do gap */
+    gap: 16px;
+    padding: 24px;
+}
+
+ul li a{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;  /*alinha na linha horizontal */
+    align-items: center; /*alinha o item no centro da linha vertical*/
+    padding: 16px 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px;  /* arredondamento de bordas */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);  /*leve transparencia */
+    text-decoration: none;   /*para remover a linha em baixo da escrita*/
+    font-weight: 500;
+    transition: background 0.2s;  /*faz o elemento dar um leve piscada*/
+
+}
+
+
+ul li a:hover {      
+    background: var(--highlight-color);
+    border: 1.5px solid var(--text-color);
+}
+
+#social-links {
+    font-size: 24px; /*para almentar o tamanho dos icones */;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 16px; */ 
+    padding: 24px 0;
+}
+
+#social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    transition: background 0.2s;
+    border-radius: 50%;
+}
+#social-links a:hover {
+    background: var(--highlight-color);
+    
+
+}
+
+footer {
+    padding: 24px 0;
+    text-align: center;
+}
